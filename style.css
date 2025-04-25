@@ -1,0 +1,2932 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #f0f4ff, #e4ecff);
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Navbar styling */
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-text {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2bb0ee;
+  letter-spacing: 0.5px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-item {
+  margin: 0 5px;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 8px 15px;
+  color: #394655;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background-color: #2bb0ee;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #2bb0ee;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 70%;
+}
+
+.btn-item {
+  margin-left: 10px;
+}
+
+.nav-btn {
+  padding: 8px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.login-btn {
+  color: #2bb0ee;
+  border: 2px solid #2bb0ee;
+  background-color: transparent;
+}
+
+.login-btn:hover {
+  background-color: rgba(43, 176, 238, 0.1);
+  transform: translateY(-2px);
+}
+
+.signup-btn {
+  color: white;
+  background: linear-gradient(to right, #2bb0ee, #1a9cd8);
+  border: none;
+  box-shadow: 0 4px 10px rgba(43, 176, 238, 0.3);
+}
+
+.signup-btn:hover {
+  background: linear-gradient(to right, #1a9cd8, #0e8bc7);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(43, 176, 238, 0.4);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1010;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background-color: #394655;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Add spacing for fixed header */
+body {
+  padding-top: 80px;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1005;
+  }
+
+  .navbar.active {
+    right: 0;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nav-item {
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 12px 20px;
+    width: 100%;
+  }
+
+  .btn-item {
+    margin: 10px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-btn {
+    width: 80%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hamburger.active .hamburger-line:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .hamburger-line:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  /* Navbar overlay */
+  .body-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .body-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Add some animation for navbar on scroll */
+.header.scrolled {
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.hero-section {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 30px;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("images/background.jpg"); /* Sử dụng ảnh của bạn */
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  border-radius: 30px;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.hero-content {
+  max-width: 500px;
+  color: #fff;
+  padding: 10px 0;
+  margin: 0;
+}
+
+/* Style cho text và elements trong hero */
+.hero-section h1,
+.hero-section h2 {
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section .accent-line {
+  background-color: #2bb0ee;
+}
+
+.hero-section .countdown-box {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Style cho nút CTA trong hero */
+.hero-cta {
+  margin-top: 30px;
+}
+
+.hero-consult-btn {
+  position: fixed; /* Thay đổi từ static thành fixed */
+  bottom: 20px; /* Cố định ở dưới viewport */
+  right: 20px; /* Canh phải */
+  display: inline-block;
+  margin-right: 0;
+  transform-origin: center;
+  background: linear-gradient(to right, #8b2f2f, #7a2929);
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  z-index: 1000; /* Đảm bảo nút hiển thị trên các phần tử khác */
+  box-shadow: 0 6px 18px rgba(139, 47, 47, 0.35),
+    0 2px 5px rgba(139, 47, 47, 0.2);
+  transition: all 0.3s ease;
+}
+
+.hero-consult-btn:hover {
+  background: linear-gradient(to right, #7a2929, #692323);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(139, 47, 47, 0.5),
+    0 4px 10px rgba(139, 47, 47, 0.25);
+}
+
+h1 {
+  font-size: 3.5rem;
+  color: #2bb0ee;
+  margin-bottom: 10px;
+  letter-spacing: -1px; /* Thêm letter-spacing */
+  font-weight: 700; /* Tăng độ đậm */
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: #4a5568;
+  margin-bottom: 30px;
+  letter-spacing: -0.5px; /* Thêm letter-spacing */
+}
+
+.accent-line {
+  width: 80px;
+  height: 4px;
+  background-color: #2bb0ee;
+  margin: 20px 0;
+}
+
+.countdown-box {
+  background: white;
+  border-radius: 15px;
+  padding: 35px; /* Tăng padding */
+  margin-top: 50px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05); /* Cải thiện shadow */
+}
+
+.countdown-title {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: bolder;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: space-around;
+  max-width: 400px;
+  margin-bottom: 30px;
+}
+
+.timer-block {
+  text-align: center;
+}
+
+.timer-item {
+  background: #283046;
+  color: white;
+  width: 75px; /* Tăng kích thước nhẹ */
+  height: 75px; /* Tăng kích thước nhẹ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.2rem; /* Tăng font size */
+  font-weight: bold;
+  border-radius: 8px; /* Tăng độ bo góc */
+  box-shadow: 0 4px 12px rgba(40, 48, 70, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1); /* Cải thiện shadow */
+}
+
+.timer-label {
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  color: #666;
+  font-weight: bolder;
+}
+
+.crypto-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  border-top: 1px solid #eee;
+  padding-top: 25px;
+  gap: 15px; /* Thêm khoảng cách giữa các item */
+}
+
+.crypto-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02); /* Thêm shadow nhẹ */
+  transition: all 0.3s ease;
+}
+
+.crypto-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05); /* Tăng shadow khi hover */
+}
+
+.crypto-icon {
+  width: 24px; /* Tăng kích thước nhẹ */
+  height: 24px; /* Tăng kích thước nhẹ */
+  margin-right: 12px;
+  background: #666;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Thêm shadow */
+}
+
+.eth-icon {
+  background: #627eea;
+}
+
+.btc-icon {
+  background: #f7931a;
+}
+
+.bch-icon {
+  background: #0ac18e;
+}
+
+.crypto-amount {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.crypto-label {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.pre-sale-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  background-color: #f8fbff; /* Thêm background nhẹ */
+  padding: 18px 25px; /* Tăng padding */
+  border-radius: 10px; /* Bo góc */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03); /* Thêm shadow */
+  border: 1px solid rgba(227, 232, 245, 0.8); /* Thêm viền nhẹ */
+}
+
+.price-info {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: black;
+}
+
+.buy-btn {
+  background: linear-gradient(to right, #2bb0ee, #1a9cd8); /* Gradient */
+  color: white;
+  border: none;
+  padding: 15px 45px; /* Tăng padding ngang */
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(43, 176, 238, 0.35),
+    0 2px 5px rgba(43, 176, 238, 0.15); /* Cải thiện shadow */
+}
+
+.buy-btn:hover {
+  background: linear-gradient(to right, #1a9cd8, #0e8bc7);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(43, 176, 238, 0.45),
+    0 3px 7px rgba(43, 176, 238, 0.2); /* Tăng shadow khi hover */
+}
+
+.consult-btn {
+  background: linear-gradient(to right, #8b2f2f, #7a2929);
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: fixed; /* Giữ nút cố định trên màn hình */
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(139, 47, 47, 0.35),
+    0 2px 5px rgba(139, 47, 47, 0.2);
+  z-index: 1000; /* Đảm bảo nút hiển thị trên các phần tử khác */
+  display: block;
+}
+
+.consult-btn:hover {
+  background: linear-gradient(to right, #7a2929, #692323);
+  transform: translateY(-3px) scale(1.05); /* Kết hợp cả hai hiệu ứng */
+  box-shadow: 0 10px 25px rgba(139, 47, 47, 0.5),
+    0 4px 10px rgba(139, 47, 47, 0.25); /* Tăng shadow khi hover */
+}
+
+/* Update responsive styling for consult button */
+@media (max-width: 992px) {
+  /* Hiển thị banner tư vấn responsive */
+  .consult-banner {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+  }
+
+  .consult-banner-image {
+    width: 60%;
+    background-color: #f8f9fa;
+    padding: 15px;
+  }
+
+  .consult-banner-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .consult-banner-btn {
+    display: none;
+    width: 40%;
+    background: #8b2f2f;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .consult-banner-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+}
+
+@media (max-width: 576px) {
+  .consult-banner-image {
+    width: 50%; /* Giảm kích thước ảnh trên điện thoại */
+  }
+
+  .hero-background {
+    border-radius: 30px;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(23, 44, 83, 0.85) 0%,
+      rgba(77, 123, 177, 0.65) 100%
+    );
+  }
+
+  .consult-banner-btn {
+    width: 50%; /* Tăng không gian cho nút */
+    font-size: 14px; /* Giảm kích thước chữ */
+    padding: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .consult-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+/* Option to hide button on very small screens */
+@media (max-width: 480px) {
+  /* Thêm nút thay thế nhỏ hơn vào footer cho màn hình mobile */
+  .mobile-consult-btn {
+    display: none;
+  }
+
+  .mobile-consult-btn:hover {
+    background: linear-gradient(to right, #7a2929, #692323);
+  }
+}
+
+/* Update position for consultation button on mobile */
+@media (max-width: 992px) {
+  .consult-btn {
+    bottom: 80px;
+  }
+}
+
+.hero-illustration {
+  width: 100%;
+  max-width: 500px; /* Giảm nhẹ chiều rộng tối đa */
+  background-size: cover;
+  position: relative;
+  overflow: hidden; /* Ẩn phần tràn ra ngoài khi áp dụng transform */
+}
+
+.hero-illustration img {
+  width: 100%;
+  height: 450px;
+  border-radius: 30px; /* Tăng độ bo góc ảnh */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18), 0 5px 15px rgba(0, 0, 0, 0.1); /* Cải thiện shadow */
+  transition: transform 0.5s ease; /* Thêm hiệu ứng chuyển động */
+  transform: scale(1.02); /* Phóng to hình ảnh nhẹ */
+  filter: brightness(1.05) contrast(1.05); /* Tăng độ sáng và tương phản nhẹ */
+}
+
+.hero-illustration:hover img {
+  transform: scale(1.04); /* Phóng to thêm khi hover */
+}
+
+/* Thêm hiệu ứng đường viền mờ cho hình ảnh */
+.hero-illustration::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid rgba(43, 176, 238, 0.2);
+  border-radius: 20px;
+  z-index: -1;
+}
+
+/* STMX Coin Section */
+.stmx-container {
+  max-width: 1200px;
+  margin: 50px auto; /* Thêm margin top/bottom */
+  padding: 60px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07), 0 5px 15px rgba(0, 0, 0, 0.03); /* Cải thiện shadow */
+  border: 1px solid rgba(227, 232, 245, 0.6); /* Thêm viền nhẹ */
+}
+
+.stmx-image {
+  flex: 1;
+  min-width: 400px;
+  max-width: 300px;
+  position: relative;
+}
+
+.stmx-image #stmx-pic {
+  box-shadow: none;
+}
+
+.stmx-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12), 0 5px 15px rgba(0, 0, 0, 0.07); /* Cải thiện shadow */
+  transition: transform 0.3s ease;
+}
+
+.stmx-image img:hover {
+  transform: translateY(-5px);
+}
+
+.stmx-content {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px 30px;
+}
+
+.stmx-title {
+  font-size: 42px;
+  color: #394655;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.stmx-content .accent-line {
+  width: 120px;
+  height: 4px;
+  background-color: #2bb0ee;
+  margin-bottom: 25px;
+}
+
+.stmx-description {
+  margin-bottom: 25px;
+  color: #555;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.stmx-description a {
+  color: #2bb0ee;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.stmx-description a:hover {
+  text-decoration: underline;
+  color: #1a9cd8;
+}
+
+.features-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.feature-item {
+  flex: 1 0 50%;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  min-width: 250px;
+  padding: 10px 15px;
+  background: rgba(248, 251, 255, 0.6);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02); /* Thêm shadow nhẹ */
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+  background: rgba(248, 251, 255, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05), 0 2px 5px rgba(0, 0, 0, 0.03); /* Tăng shadow khi hover */
+}
+
+.feature-icon {
+  color: #2bb0ee;
+  margin-right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  background: rgba(43, 176, 238, 0.1);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(43, 176, 238, 0.15); /* Thêm shadow */
+}
+
+.feature-text {
+  font-size: 15px;
+  color: #394655;
+}
+
+/* Investor Protection Section */
+.investor-protection-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 60px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07), 0 5px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(227, 232, 245, 0.6);
+}
+
+.protection-content {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px 30px;
+}
+
+.protection-title {
+  font-size: 42px;
+  color: #394655;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.protection-content .accent-line {
+  width: 120px;
+  height: 4px;
+  background-color: #2bb0ee;
+  margin-bottom: 25px;
+}
+
+.protection-description {
+  margin-bottom: 25px;
+  color: #555;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.protection-details {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.5;
+  background: rgba(248, 251, 255, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.protection-image {
+  flex: 1;
+  text-align: center;
+  min-width: 400px;
+  max-width: 600px;
+  position: relative;
+}
+
+.protection-image #crypto-chart {
+  box-shadow: none;
+}
+
+.protection-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12), 0 5px 15px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease;
+}
+
+.protection-image img:hover {
+  transform: translateY(-5px);
+}
+
+/* Marketplace & Finance Section */
+.marketplace-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 60px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07), 0 5px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(227, 232, 245, 0.6);
+}
+
+.marketplace-image {
+  flex: 1;
+  min-width: 400px;
+  max-width: 600px;
+  position: relative;
+}
+
+.marketplace-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12), 0 5px 15px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease;
+}
+
+#market-img {
+  box-shadow: none;
+}
+
+.marketplace-image img:hover {
+  transform: translateY(-5px);
+}
+
+.marketplace-content {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px 30px;
+}
+
+.marketplace-title {
+  font-size: 42px;
+  color: #394655;
+  margin-bottom: 20px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.marketplace-content .accent-line {
+  width: 120px;
+  height: 4px;
+  background-color: #2bb0ee;
+  margin-bottom: 25px;
+}
+
+.marketplace-description {
+  margin-bottom: 25px;
+  color: #555;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.marketplace-details {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.5;
+  background: rgba(248, 251, 255, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+/* Benefits Section */
+.benefits-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 60px 20px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07), 0 5px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(227, 232, 245, 0.6);
+  text-align: center;
+}
+
+.benefits-title {
+  font-size: 42px;
+  color: #394655;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.benefits-container .accent-line {
+  width: 120px;
+  height: 4px;
+  background-color: #2bb0ee;
+  margin: 0 auto 40px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.benefit-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 30px 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05), 0 3px 10px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(227, 232, 245, 0.6);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08), 0 5px 15px rgba(0, 0, 0, 0.04);
+}
+
+.benefit-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  background-color: rgba(43, 176, 238, 0.08);
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(43, 176, 238, 0.12);
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover .benefit-icon {
+  transform: scale(1.05);
+  background-color: rgba(43, 176, 238, 0.12);
+  box-shadow: 0 8px 20px rgba(43, 176, 238, 0.18);
+}
+
+.benefit-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.benefit-content {
+  flex: 1;
+}
+
+.benefit-card-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #394655;
+  margin-bottom: 10px;
+}
+
+.benefit-description {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Team Section */
+.team-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 60px 20px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07), 0 5px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(227, 232, 245, 0.6);
+  text-align: center;
+}
+
+.team-title {
+  font-size: 42px;
+  color: #394655;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.team-container .accent-line {
+  width: 120px;
+  height: 4px;
+  background-color: #2bb0ee;
+  margin: 0 auto 40px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.team-member {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 30px 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05), 0 3px 10px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(227, 232, 245, 0.6);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08), 0 5px 15px rgba(0, 0, 0, 0.04);
+}
+
+.member-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border: 4px solid rgba(255, 255, 255, 0.8);
+  background-color: #f5f5f5;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.team-member:hover .member-photo {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(43, 176, 238, 0.15);
+  border-color: rgba(43, 176, 238, 0.2);
+}
+
+.member-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.team-member:hover .member-photo img {
+  transform: scale(1.08);
+}
+
+.member-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #394655;
+  margin-bottom: 10px;
+}
+
+.member-experience {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  /* Giới hạn số dòng hiển thị */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 42px; /* 2 dòng * 1.5 line-height * 14px font-size */
+}
+
+.member-social {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #f5f7fa;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #394655;
+  text-decoration: none;
+  position: relative;
+}
+
+.social-icon::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.social-icon.linkedin::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%230077b5"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>');
+}
+
+.social-icon.twitter::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%231da1f2"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>');
+}
+
+.social-icon:hover {
+  background-color: #2bb0ee;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(43, 176, 238, 0.2);
+}
+
+.social-icon.linkedin:hover::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>');
+}
+
+.social-icon.twitter:hover::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>');
+}
+
+/* Advisory Board Section */
+.advisory-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 60px 20px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07), 0 5px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(227, 232, 245, 0.6);
+  text-align: center;
+}
+
+.advisory-title {
+  font-size: 42px;
+  color: #394655;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.advisory-container .accent-line {
+  width: 120px;
+  height: 4px;
+  background-color: #2bb0ee;
+  margin: 0 auto 40px;
+}
+
+.advisory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 40px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.advisor-member {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 35px 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05), 0 3px 10px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(227, 232, 245, 0.6);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.advisor-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08), 0 5px 15px rgba(0, 0, 0, 0.04);
+}
+
+.advisor-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border: 4px solid rgba(255, 255, 255, 0.8);
+  background-color: #f5f5f5;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.advisor-member:hover .advisor-photo {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(43, 176, 238, 0.15);
+  border-color: rgba(43, 176, 238, 0.2);
+}
+
+.advisor-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.advisor-member:hover .advisor-photo img {
+  transform: scale(1.08);
+}
+
+.advisor-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #394655;
+  margin-bottom: 10px;
+}
+
+.advisor-experience {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  /* Giới hạn số dòng hiển thị */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 45px; /* 2 dòng * 1.5 line-height * 15px font-size */
+}
+
+.advisor-social {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: auto;
+  padding-top: 15px;
+}
+
+/* Sửa khoảng cách giữa các section cuối trang */
+.token-distribution-container,
+.newsletter-container {
+  margin: 30px auto 0;
+}
+
+/* Loại bỏ margin-bottom của newsletter */
+.newsletter-container + .footer {
+  margin-top: 0;
+}
+
+/* Token Distribution Section */
+.token-distribution-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 60px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07), 0 5px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(227, 232, 245, 0.6);
+}
+
+.token-distribution-content {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px 30px;
+}
+
+.token-title {
+  font-size: 42px;
+  color: #394655;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.token-distribution-content .accent-line {
+  width: 120px;
+  height: 4px;
+  background-color: #2bb0ee;
+  margin-bottom: 25px;
+}
+
+.token-description {
+  margin-bottom: 25px;
+  color: #555;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.token-description p {
+  margin-bottom: 15px;
+}
+
+.token-chart-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 400px;
+  max-width: 600px;
+  padding: 0 20px;
+}
+
+.token-chart {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.chart-bar-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 15px;
+}
+
+.chart-bar {
+  width: 50px;
+  border-radius: 8px 8px 0 0;
+  transition: all 0.3s ease;
+}
+
+.chart-bar:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.bar-community {
+  background: #00f2c3;
+  height: 100%;
+}
+
+.bar-funding {
+  background: #0098f0;
+  height: 60%;
+}
+
+.bar-team {
+  background: #5558ff;
+  height: 40%;
+}
+
+.bar-advisors {
+  background: #b552ea;
+  height: 20%;
+}
+
+.bar-bounty {
+  background: #f6c343;
+  height: 10%;
+}
+
+.token-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #394655;
+}
+
+.legend-color {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.community-color {
+  background: #00f2c3;
+}
+
+.funding-color {
+  background: #0098f0;
+}
+
+.team-color {
+  background: #5558ff;
+}
+
+.advisors-color {
+  background: #b552ea;
+}
+
+.bounty-color {
+  background: #f6c343;
+}
+
+/* Newsletter Section */
+.newsletter-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 40px 20px;
+  background: linear-gradient(90deg, #00f2c3 0%, #0098f0 100%);
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0 !important;
+}
+
+.newsletter-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
+}
+
+.newsletter-icon {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.newsletter-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.newsletter-text {
+  flex: 1;
+  color: white;
+}
+
+.newsletter-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.newsletter-description {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.newsletter-form {
+  display: flex;
+  min-width: 300px;
+  flex: 1;
+  max-width: 450px;
+}
+
+.email-input {
+  flex: 1;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  font-size: 16px;
+  background: white;
+}
+
+.consult-btn:not(.hero-consult-btn) {
+  display: none;
+}
+
+.email-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.submit-btn {
+  width: 50px;
+  background-color: #ff5e5b;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #e54a47;
+}
+
+/* Footer Section */
+.footer {
+  background-color: #f8f9fa;
+  padding: 50px 0 20px;
+  border-top: 1px solid #e5e5e5;
+  padding-top: 40px;
+  margin-top: -10px !important; /* Điều chỉnh giá trị này tùy theo khoảng trống của bạn */
+  position: relative;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.company-info {
+  flex: 1;
+  min-width: 300px;
+  margin-right: 40px;
+  margin-bottom: 30px;
+}
+
+.company-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.contact-info {
+  margin-bottom: 30px;
+}
+
+.contact-item {
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.contact-label {
+  min-width: 90px;
+  font-weight: 600;
+  color: #555;
+}
+
+.contact-value {
+  color: #666;
+}
+
+.address-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.address-text {
+  color: #666;
+}
+
+.customer-support {
+  flex: 0 0 300px;
+}
+
+.support-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.support-links {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+.support-links li {
+  margin-bottom: 10px;
+}
+
+.support-links a {
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.support-links a:hover {
+  color: #2bb0ee;
+}
+
+.payment-methods {
+  display: flex;
+  gap: 10px;
+}
+
+.payment-icon {
+  height: 28px;
+  width: auto;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #e5e5e5;
+  margin-top: 10px;
+}
+
+.copyright {
+  color: #888;
+  font-size: 14px;
+}
+
+/* SVG placeholder for email icon if needed */
+/* You can replace this with an actual image */
+.newsletter-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: white;
+}
+
+/* Responsive adjustments for token distribution section */
+@media (max-width: 980px) {
+  .token-distribution-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .token-distribution-content {
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .token-chart-container {
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .token-distribution-content .accent-line {
+    margin: 0 auto 25px;
+  }
+
+  .token-legend {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 576px) {
+  .token-title {
+    font-size: 32px;
+  }
+
+  .customer-support {
+    flex: 0 0;
+  }
+
+  .chart-bar {
+    width: 35px;
+  }
+
+  .chart-bar-container {
+    gap: 10px;
+  }
+}
+
+/* Responsive styles for Benefits section */
+@media (max-width: 992px) {
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits-title {
+    font-size: 32px;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(23, 44, 83, 0.85) 0%,
+      rgba(77, 123, 177, 0.65) 100%
+    );
+  }
+
+  .crypto-stats {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-top: 20px;
+  }
+
+  .crypto-item {
+    flex: 0 0 auto;
+    min-width: 120px;
+    max-width: 140px;
+    background: white;
+    white-space: nowrap;
+  }
+
+  .crypto-amount {
+    font-size: 1rem;
+  }
+
+  .crypto-label {
+    font-size: 0.75rem;
+  }
+
+  /* Ẩn thanh cuộn */
+  .crypto-stats::-webkit-scrollbar {
+    display: none;
+  }
+
+  .crypto-stats {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .benefit-card {
+    padding: 25px 15px;
+  }
+
+  .benefit-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .benefit-icon img {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Responsive styles for Team section */
+@media (max-width: 1200px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .team-title {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 576px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-member {
+    padding: 25px 15px;
+  }
+
+  .member-photo {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Responsive styles for Advisory Board section */
+@media (max-width: 992px) {
+  .advisory-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .advisory-title {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 576px) {
+  .advisory-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .advisor-member {
+    padding: 30px 20px;
+  }
+
+  .advisor-photo {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Responsive adjustments for Marketplace section */
+@media (max-width: 980px) {
+  .marketplace-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .marketplace-image {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .marketplace-content {
+    max-width: 100%;
+  }
+
+  .marketplace-content .accent-line {
+    margin: 0 auto 25px;
+  }
+
+  .marketplace-details {
+    text-align: left;
+  }
+}
+
+/* Responsive adjustments for Investor Protection section */
+@media (max-width: 980px) {
+  .investor-protection-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .protection-content {
+    max-width: 100%;
+    order: 1;
+  }
+
+  .protection-image {
+    max-width: 100%;
+    margin-bottom: 30px;
+    order: 0;
+  }
+
+  .protection-content .accent-line {
+    margin: 0 auto 25px;
+  }
+
+  .protection-details {
+    text-align: left;
+  }
+}
+
+/* Brand Partners Styling */
+.partners-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07), 0 5px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(227, 232, 245, 0.6);
+}
+
+.partners-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+  padding: 30px 0;
+  margin: 30px 0;
+}
+
+.partner-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 20px;
+  text-align: center;
+  flex: 1;
+  min-width: 180px;
+  transition: all 0.3s ease;
+}
+
+.partner-item:hover {
+  transform: translateY(-5px);
+}
+
+.partner-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.partner-subtitle {
+  font-size: 14px;
+  color: #777;
+  font-weight: normal;
+}
+
+.crypto-speaker {
+  font-weight: 600;
+}
+
+.crypto-speaker span {
+  font-weight: 400;
+  vertical-align: super;
+  font-size: 14px;
+}
+
+.the-cryptocurrency {
+  font-family: "Times New Roman", serif;
+  font-style: italic;
+}
+
+.btc-experts {
+  font-weight: bold;
+}
+
+.btc-experts .subtitle {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+/* Responsive styles for Brand Partners */
+@media (max-width: 992px) {
+  .partners-list {
+    justify-content: center;
+    padding: 25px 0;
+  }
+
+  .partner-item {
+    min-width: 150px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+  }
+
+  .hero-content,
+  .hero-image {
+    width: 100%;
+    text-align: center;
+  }
+
+  .accent-line {
+    margin: 20px auto;
+  }
+
+  .countdown-timer {
+    max-width: 100%;
+  }
+
+  .crypto-stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .pre-sale-info {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .consult-btn {
+    position: static;
+    margin-top: 20px;
+  }
+
+  .marketplace-image {
+    min-width: 100%;
+  }
+
+  .marketplace-title {
+    font-size: 32px;
+  }
+
+  .marketplace-description {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .stmx-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .stmx-image,
+  .stmx-content {
+    max-width: 100%;
+  }
+
+  .stmx-content .accent-line {
+    margin: 0 auto 25px;
+  }
+
+  .feature-item {
+    justify-content: center;
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .newsletter-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .newsletter-form {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .footer-content {
+    flex-direction: column;
+  }
+
+  .company-info,
+  .customer-support {
+    margin-right: 0;
+    margin-bottom: 40px;
+  }
+
+  .contact-item {
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+
+  .contact-label {
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .partner-item {
+    min-width: 100%;
+  }
+
+  .marketplace-details,
+  .marketplace-description {
+    padding: 15px;
+  }
+
+  .newsletter-title {
+    font-size: 28px;
+  }
+
+  .email-input {
+    padding: 12px 15px;
+  }
+
+  .submit-btn {
+    width: 40px;
+  }
+}
+
+/* Modal Form Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-container {
+  background-color: #f0f4ff;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  position: relative;
+  transform: translateY(30px);
+  transition: all 0.4s ease;
+}
+
+.modal-overlay.active .modal-container {
+  transform: translateY(0);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #394655;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 26px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+  background: #2bb0ee;
+  transform: rotate(90deg);
+}
+
+.modal-body {
+  display: flex;
+  min-height: 400px;
+}
+
+.modal-left {
+  flex: 1;
+  background-color: #fff;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-illustration {
+  max-width: 100%;
+  max-height: 300px;
+}
+
+.modal-right {
+  flex: 1;
+  padding: 40px;
+  background: linear-gradient(to right, #edf1ff, #e4ecff);
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #394655;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.consultation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.consultation-form input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.3s;
+  background-color: white;
+}
+
+.consultation-form input:focus {
+  outline: none;
+  border-color: #2bb0ee;
+  box-shadow: 0 0 0 2px rgba(43, 176, 238, 0.2);
+}
+
+.form-submit-btn {
+  background: #8b2f2f;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.form-submit-btn:hover {
+  background: #692323;
+  transform: translateY(-2px);
+}
+
+/* Modal responsive */
+@media (max-width: 768px) {
+  .modal-body {
+    flex-direction: column;
+  }
+
+  .modal-left {
+    display: none;
+  }
+
+  .modal-right {
+    padding: 30px;
+  }
+
+  .modal-container {
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+
+/* Cải thiện responsive */
+
+/* Ẩn hình hero trên điện thoại và điều chỉnh layout */
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    margin: 20px 0;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-image {
+    display: none; /* Ẩn hero image trên điện thoại */
+  }
+
+  .accent-line {
+    margin: 15px auto;
+  }
+
+  /* Chỉnh h1, h2 nhỏ hơn */
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Thu gọn countdown timer */
+@media (max-width: 768px) {
+  .countdown-box {
+    padding: 20px 15px;
+    margin-top: 25px;
+  }
+
+  .countdown-title {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .countdown-timer {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .timer-item {
+      width: 60px;
+      height: 60px;
+      font-size: 1.5rem;
+    }
+
+    .timer-label {
+      font-size: 0.7rem;
+    }
+  }
+
+  .crypto-stats {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 12px;
+    overflow-x: auto; /* Cho phép cuộn ngang nếu thiếu chỗ */
+    padding-bottom: 10px;
+    margin-top: 20px;
+  }
+
+  .crypto-item {
+    flex: 0 0 auto; /* Ngăn nó co giãn và giữ kích thước ban đầu */
+    min-width: 120px;
+    max-width: 150px;
+    background: white;
+  }
+
+  .crypto-amount {
+    font-size: 1rem;
+  }
+
+  .crypto-label {
+    font-size: 0.75rem;
+  }
+
+  .pre-sale-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .buy-btn {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+/* Thêm tối ưu cho điện thoại nhỏ hơn */
+@media (max-width: 480px) {
+  .countdown-box {
+    padding: 15px;
+  }
+
+  .timer-item {
+    width: 45px;
+    height: 45px;
+    font-size: 1.4rem;
+  }
+
+  .crypto-item {
+    margin-bottom: 8px;
+  }
+}
+
+/* Sửa hamburger menu để hiển thị menu ngang không bị tối đen */
+@media (max-width: 992px) {
+  /* Reset navbar styling */
+  .navbar {
+    position: fixed;
+    top: -300px; /* Ẩn menu bên trên thay vì bên phải */
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    z-index: 1005;
+  }
+
+  .navbar.active {
+    top: 70px; /* Hiển thị menu khi active */
+    right: 0;
+  }
+
+  .nav-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding: 0 15px;
+    margin: 0;
+  }
+
+  .nav-item {
+    margin: 4px;
+    width: auto;
+  }
+
+  .nav-link {
+    border-radius: 20px;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    white-space: nowrap;
+    background-color: #f8f9fa;
+    color: #394655;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    background-color: #2bb0ee;
+    color: white;
+  }
+
+  .nav-link.active::after,
+  .nav-link:hover::after {
+    display: none;
+  }
+
+  /* Sửa body overlay để không che khuất menu */
+  .body-overlay {
+    z-index: 1000;
+    background-color: transparent; /* Không làm đen màn hình */
+  }
+}
+
+/* Điều chỉnh cho điện thoại nhỏ */
+@media (max-width: 576px) {
+  .navbar.active {
+    top: 65px; /* Điều chỉnh khoảng cách từ header */
+  }
+
+  .nav-item {
+    margin: 3px;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+}
+
+/* Cải thiện hiển thị hình ảnh trong các container */
+@media (max-width: 992px) {
+  /* Sửa hình ảnh trong các section */
+  .stmx-image,
+  .protection-image,
+  .marketplace-image {
+    min-width: unset;
+    max-width: 100%;
+  }
+
+  .stmx-image img,
+  .protection-image img,
+  .marketplace-image img {
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* Điều chỉnh kích thước hình ảnh trong section benefits */
+  .benefit-icon img {
+    width: 35px;
+    height: 35px;
+  }
+
+  /* Sửa hiển thị hình ảnh profile */
+  .member-photo,
+  .advisor-photo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+  }
+
+  /* Cải thiện hiển thị biểu đồ token */
+  .token-chart {
+    height: 250px;
+    max-width: 400px;
+    margin: 0 auto 20px;
+  }
+
+  .chart-bar {
+    width: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Ẩn hero image trên điện thoại */
+  .hero-image {
+    display: none;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  /* Thiết lập container section thẳng hàng */
+  .stmx-container,
+  .investor-protection-container,
+  .marketplace-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .stmx-content,
+  .protection-content,
+  .marketplace-content {
+    max-width: 100%;
+    order: 2;
+  }
+
+  .stmx-image,
+  .protection-image,
+  .marketplace-image {
+    max-width: 80%;
+    margin-bottom: 30px;
+    order: 1;
+  }
+
+  .stmx-content .accent-line,
+  .protection-content .accent-line,
+  .marketplace-content .accent-line {
+    margin: 0 auto 25px;
+  }
+
+  /* Đảm bảo ảnh partner không quá lớn */
+  .partner-item img {
+    max-width: 120px;
+    height: auto;
+  }
+
+  /* Giảm kích thước biểu đồ token */
+  .token-chart {
+    height: 200px;
+  }
+
+  .chart-bar {
+    width: 35px;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Các điều chỉnh thêm cho điện thoại nhỏ */
+  .stmx-image,
+  .protection-image,
+  .marketplace-image {
+    max-width: 95%;
+  }
+
+  /* Giảm kích thước hình ảnh trong benefit card */
+  .benefit-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .benefit-icon img {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Điều chỉnh token chart */
+  .token-chart {
+    height: 180px;
+  }
+
+  .chart-bar {
+    width: 28px;
+    border-radius: 6px 6px 0 0;
+  }
+
+  /* Sửa hiển thị hình ảnh footer */
+  .payment-methods {
+    justify-content: center;
+  }
+
+  .payment-icon {
+    height: 24px;
+    margin: 0 5px;
+  }
+
+  /* Sửa hiển thị hình form modal */
+  .modal-left {
+    padding: 20px;
+  }
+
+  .form-illustration {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+}
+
+/* Fix specific cho modal form */
+@media (max-width: 768px) {
+  .modal-left {
+    display: none; /* Ẩn phần hình ảnh trong modal trên mobile */
+  }
+
+  .modal-right {
+    width: 100%;
+    padding: 25px 20px;
+  }
+}
+
+/* Fix cho container width và padding trên điện thoại */
+@media (max-width: 576px) {
+  .container {
+    padding: 15px 10px;
+  }
+
+  /* Giảm padding container để tối ưu không gian */
+  .stmx-container,
+  .investor-protection-container,
+  .marketplace-container,
+  .benefits-container,
+  .team-container,
+  .advisory-container,
+  .token-distribution-container,
+  .newsletter-container,
+  .partners-container {
+    padding: 30px 15px;
+    margin: 20px auto;
+  }
+}
+
+/* Sửa hiển thị overlay cho các hình trang trí */
+@media (max-width: 768px) {
+  .hero-illustration::before,
+  .stmx-image::before,
+  .protection-image::before,
+  .marketplace-image::before {
+    display: none;
+  }
+}
+
+/* Animation cho các tiêu đề section */
+
+/* Keyframes cho các hiệu ứng */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Hiệu ứng cho tiêu đề chính trong hero section */
+.hero-content h1 {
+  background: linear-gradient(90deg, #2bb0ee, #1a9cd8, #0e8bc7, #2bb0ee);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: fadeInUp 1s ease-out forwards, gradientShift 6s infinite;
+  opacity: 0;
+}
+
+.hero-content h2 {
+  animation: fadeInUp 1s ease-out 0.3s forwards;
+  opacity: 0;
+  color: black;
+}
+
+.hero-content .accent-line {
+  animation: slideInLeft 1.2s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
+/* Animation cho các tiêu đề section */
+.stmx-title,
+.protection-title,
+.marketplace-title,
+.benefits-title,
+.team-title,
+.advisory-title,
+.token-title,
+.newsletter-title {
+  position: relative;
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Animation cho accent line trong các section */
+.stmx-content .accent-line,
+.protection-content .accent-line,
+.marketplace-content .accent-line {
+  animation: slideInLeft 1s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.benefits-container .accent-line,
+.team-container .accent-line,
+.advisory-container .accent-line {
+  animation: scaleIn 0.8s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.token-distribution-content .accent-line {
+  animation: slideInRight 1s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+/* Hiệu ứng highlight cho tiêu đề khi hover */
+.stmx-title:hover,
+.protection-title:hover,
+.marketplace-title:hover,
+.benefits-title:hover,
+.team-title:hover,
+.advisory-title:hover,
+.token-title:hover {
+  background: linear-gradient(90deg, #2bb0ee, #1a9cd8);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientShift 3s infinite;
+  transition: all 0.3s ease;
+}
+
+/* Thêm hiệu ứng animation khi scroll đến section */
+.animate-title {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation đặc biệt cho newsletter title */
+.newsletter-title {
+  background: linear-gradient(90deg, #fff, #e4f5ff, #fff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: fadeInUp 0.8s ease-out forwards, gradientShift 5s infinite;
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .newsletter-container {
+    margin: 30px auto 0;
+    padding-bottom: 20px;
+  }
+
+  .footer {
+    padding-top: 30px;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .newsletter-container {
+    margin: 20px auto 0;
+    padding-bottom: 15px;
+  }
+
+  .footer {
+    padding-top: 20px;
+  }
+}
+
+/* Responsive styles cho hero-consult-btn */
+@media (max-width: 768px) {
+  .hero-consult-btn {
+    padding: 12px 25px;
+    font-size: 0.95rem;
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-consult-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    bottom: 15px;
+    right: 15px;
+    display: none;
+  }
+}
+
+/* Điều chỉnh vị trí nút khi có banner consult */
+@media (max-width: 992px) {
+  .hero-consult-btn {
+    bottom: 80px; /* Khi có banner consult, đẩy nút lên cao hơn */
+    display: none;
+  }
+}
